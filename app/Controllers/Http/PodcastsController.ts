@@ -1,6 +1,6 @@
 import Podcast from "App/Models/Podcast"
 
-export default class DisciplinasController {
+export default class PodcastsController {
     index(){
         return Podcast.all()
     }

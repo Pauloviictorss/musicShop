@@ -1,6 +1,6 @@
 import Plataforma from "App/Models/Plataforma"
 
-export default class DisciplinasController {
+export default class PlataformasController {
     index(){
         return Plataforma.all()
     }
