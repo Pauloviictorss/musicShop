@@ -9,3 +9,4 @@ Route.get('/rota1', async () => {
 })
 
 Route.resource('/host', 'HostsController').apiOnly()
+Route.resource('/plataforma', 'PlataformasController').apiOnly()
