@@ -4,6 +4,24 @@ export default class HostsController {
     index(){
         return Host.all()
     }
+    /*index({request}){
+
+        const {nome, cursoId} = request.all()
+
+        const disciplinas = Disciplina.query()
+                                     .select(['id', 'nome', 'cursoId'])
+
+        if(cursoId){
+            disciplinas.where('cursoId', cursoId)
+        }
+
+        if(nome){
+            disciplinas.where('nome', nome)
+        }
+
+        return disciplinas
+    }*/
+
     store({request}){
         const dados = request.only(['nome', 'localizacao'])
 
