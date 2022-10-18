@@ -5,7 +5,7 @@ export default class MusicasController {
         return Musica.all()
     }
     store({request}){
-        const dados = request.only(['nome', 'duracao', 'artistaId', 'albumId', 'plataformaId'])
+        const dados = request.only(['nome', 'duracao'])
 
         return Musica.create(dados)
     }
@@ -22,7 +22,7 @@ export default class MusicasController {
         const id = request.param('id')
         const musica = await Musica.findOrFail(id)
 
-        const dados = request.only(['nome', 'duracao', 'artistaId', 'albumId', 'plataformaId'])
+        const dados = request.only(['nome', 'duracao'])
         
         musica.merge(dados).save()
 

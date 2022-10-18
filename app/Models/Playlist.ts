@@ -11,6 +11,9 @@ export default class Playlist extends BaseModel {
   @column()
   public musicaId: number
 
+  @column()
+  public user: string
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

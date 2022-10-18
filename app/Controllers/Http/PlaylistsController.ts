@@ -5,7 +5,7 @@ export default class PlaylistsController {
         return Playlist.all()
     }
     store({request}){
-        const dados = request.only(['nome', 'musicaId'])
+        const dados = request.only(['nome', 'musicaId', 'user'])
 
         return Playlist.create(dados)
     }
@@ -22,7 +22,7 @@ export default class PlaylistsController {
         const id = request.param('id')
         const playlist = await Playlist.findOrFail(id)
 
-        const dados = request.only(['nome', 'musicaId'])
+        const dados = request.only(['nome', 'musicaId', 'user'])
         
         playlist.merge(dados).save()
 

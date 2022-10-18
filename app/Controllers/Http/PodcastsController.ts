@@ -5,7 +5,7 @@ export default class PodcastsController {
         return Podcast.all()
     }
     store({request}){
-        const dados = request.only(['nome', 'hostId', 'plataformaId'])
+        const dados = request.only(['nome'])
 
         return Podcast.create(dados)
     }
@@ -22,7 +22,7 @@ export default class PodcastsController {
         const id = request.param('id')
         const podcast = await Podcast.findOrFail(id)
 
-        const dados = request.only(['nome', 'hostId', 'plataformaId'])
+        const dados = request.only(['nome'])
         
         podcast.merge(dados).save()
 

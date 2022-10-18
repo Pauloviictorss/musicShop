@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nome').notNullable()
-      table.integer('artista_id').unsigned().references('id').inTable('artistas').notNullable()
+      table.integer('musica_id').unsigned().references('id').inTable('musicas').notNullable()
       table.date('lancamento').notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

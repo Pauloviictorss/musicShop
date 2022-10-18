@@ -1,10 +1,10 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Podcast from 'App/Models/Podcast'
+import Hostpodcast from 'App/Models/HostPodcast'
 
 export default class extends BaseSeeder {
   public async run () {
-    await Podcast.createMany([
-      {nome: 'Flow Podcast'},
+    await Hostpodcast.createMany([
+      {podcastId: 1, hostId: 1},
     ])
   }
 }

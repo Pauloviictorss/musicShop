@@ -4,7 +4,7 @@ import Artista from 'App/Models/Artista'
 export default class extends BaseSeeder {
   public async run () {
     await Artista.createMany([
-      {nome: 'Paulo', dataNascimento: new Date(2000, 10, 12)},
+      {nome: 'Paulo', albumId: 1, dataNascimento: new Date(2000, 10, 12)},
     ])
   }
 }

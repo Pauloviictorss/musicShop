@@ -4,7 +4,7 @@ import Musica from 'App/Models/Musica'
 export default class extends BaseSeeder {
   public async run () {
     await Musica.createMany([
-      {nome: 'Make believe', duracao: '4min', artistaId: 1, albumId: 1, plataformaId: 1},
+      {nome: 'Make believe', duracao: '4min'},
     ])
   }
 }

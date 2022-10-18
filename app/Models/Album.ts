@@ -9,7 +9,7 @@ export default class Album extends BaseModel {
   public nome: string
 
   @column()
-  public artistaId: number
+  public musicaId: number
 
   @column()
   public lancamento: Date

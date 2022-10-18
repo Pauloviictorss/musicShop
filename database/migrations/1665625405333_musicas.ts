@@ -9,9 +9,6 @@ export default class extends BaseSchema {
 
       table.string('nome').notNullable()
       table.string('duracao')
-      table.integer('artista_id').unsigned().references('id').inTable('artistas').notNullable()
-      table.integer('album_id').unsigned().references('id').inTable('albums').notNullable()
-      table.integer('plataforma_id').unsigned().references('id').inTable('plataformas').notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

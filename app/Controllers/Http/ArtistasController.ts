@@ -5,7 +5,7 @@ export default class ArtistasController {
         return Artista.all()
     }
     store({request}){
-        const dados = request.only(['nome', 'dataNascimento'])
+        const dados = request.only(['nome', 'dataNascimento', 'albumId'])
 
         return Artista.create(dados)
     }
@@ -22,7 +22,7 @@ export default class ArtistasController {
         const id = request.param('id')
         const artista = await Artista.findOrFail(id)
 
-        const dados = request.only(['nome', 'dataNascimento'])
+        const dados = request.only(['nome', 'dataNascimento', 'albumId'])
         
         artista.merge(dados).save()
 

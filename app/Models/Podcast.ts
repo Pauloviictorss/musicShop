@@ -8,12 +8,6 @@ export default class Podcast extends BaseModel {
   @column()
   public nome: string
 
-  @column()
-  public hostId: number
-  
-  @column()
-  public plataformaId: number
-
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

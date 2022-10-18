@@ -5,7 +5,7 @@ export default class AlbumsController {
         return Album.all()
     }
     store({request}){
-        const dados = request.only(['nome', 'artistaId', 'lancamento'])
+        const dados = request.only(['nome', 'musicaId', 'lancamento'])
 
         return Album.create(dados)
     }
@@ -22,7 +22,7 @@ export default class AlbumsController {
         const id = request.param('id')
         const album = await Album.findOrFail(id)
 
-        const dados = request.only(['nome', 'artistaId', 'lancamento'])
+        const dados = request.only(['nome', 'musicaId', 'lancamento'])
         
         album.merge(dados).save()
 

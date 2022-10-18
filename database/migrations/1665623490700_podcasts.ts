@@ -8,8 +8,6 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nome').notNullable()
-      table.integer('host_id').unsigned().references('id').inTable('hosts').notNullable()
-      table.integer('plataforma_id').unsigned().references('id').inTable('plataformas').notNullable()
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
