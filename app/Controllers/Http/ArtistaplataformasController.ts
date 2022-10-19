@@ -1,8 +1,22 @@
 import Artistaplataforma from "App/Models/Artistaplataforma"
 
 export default class ArtistaplataformasController {
-    index(){
-        return Artistaplataforma.all()
+    index({request}){
+
+        const {plataformaId, artistaId} = request.all()
+
+        const artistaplataforma = Artistaplataforma.query()
+                          .select(['plataformaId', 'artistaId'])
+
+        if(plataformaId){
+            artistaplataforma.where('plataformaId', plataformaId)
+        }
+
+        if(artistaId){
+            artistaplataforma.where('artistaId', artistaId)
+        }
+
+        return artistaplataforma
     }
     store({request}){
         const dados = request.only(['artistaId', 'plataformaId'])

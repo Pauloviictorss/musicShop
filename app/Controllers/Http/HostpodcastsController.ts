@@ -1,8 +1,22 @@
 import HostPodcast from "App/Models/HostPodcast"
 
 export default class HostPodcastsController {
-    index(){
-        return HostPodcast.all()
+    index({request}){
+
+        const {artistaId, plataformaId} = request.all()
+
+        const album = HostPodcast.query()
+                          .select(['id', 'artistaId', 'plataformaId'])
+
+        if(artistaId){
+            album.where('artistaId', artistaId)
+        }
+
+        if(plataformaId){
+            album.where('plataformaId', plataformaId)
+        }
+
+        return album
     }
     store({request}){
         const dados = request.only(['artistaId', 'plataformaId'])
