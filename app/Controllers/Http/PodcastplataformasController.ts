@@ -1,8 +1,22 @@
 import Podcastplataforma from "App/Models/Podcastplataforma"
 
 export default class PodcastplataformasController {
-    index(){
-        return Podcastplataforma.all()
+    index({request}){
+
+        const {podcastId, plataformaId} = request.all()
+
+        const podcastplataforma = Podcastplataforma.query()
+                         .select(['id', 'podcastId', 'plataformaId'])
+
+        if(podcastId){
+            podcastplataforma.where('podcastId', podcastId)
+        }
+
+        if(plataformaId){
+            podcastplataforma.where('plataformaId', plataformaId)
+        }
+
+        return podcastplataforma
     }
     store({request}){
         const dados = request.only(['podcastId', 'plataformaId'])

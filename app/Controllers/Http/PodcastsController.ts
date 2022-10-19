@@ -1,8 +1,18 @@
 import Podcast from "App/Models/Podcast"
 
 export default class PodcastsController {
-    index(){
-        return Podcast.all()
+    index({request}){
+
+        const {nome} = request.all()
+
+        const podcast = Podcast.query()
+                         .select(['id', 'nome'])
+
+        if(nome){
+            podcast.where('nome', nome)
+        }
+
+        return podcast
     }
     store({request}){
         const dados = request.only(['nome'])

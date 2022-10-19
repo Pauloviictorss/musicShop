@@ -1,8 +1,18 @@
 import Plataforma from "App/Models/Plataforma"
 
 export default class PlataformasController {
-    index(){
-        return Plataforma.all()
+    index({request}){
+
+        const {nome} = request.all()
+
+        const plataforma = Plataforma.query()
+                         .select(['id', 'nome'])
+
+        if(nome){
+            plataforma.where('nome', nome)
+        }
+
+        return plataforma
     }
     store({request}){
         const dados = request.only(['nome'])

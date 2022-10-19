@@ -1,8 +1,18 @@
 import Musica from "App/Models/Musica"
 
 export default class MusicasController {
-    index(){
-        return Musica.all()
+    index({request}){
+
+        const {nome} = request.all()
+
+        const musica = Musica.query()
+                         .select(['id', 'nome', 'duracao'])
+
+        if(nome){
+            musica.where('nome', nome)
+        }
+
+        return musica
     }
     store({request}){
         const dados = request.only(['nome', 'duracao'])

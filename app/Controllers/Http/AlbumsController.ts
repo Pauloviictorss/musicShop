@@ -1,8 +1,26 @@
 import Album from "App/Models/Album"
 
 export default class AlbumsController {
-    index(){
-        return Album.all()
+    index({request}){
+
+        const {nome, lancamento, musicaId} = request.all()
+
+        const album = Album.query()
+                          .select(['id', 'nome', 'lancamento'])
+
+        if(lancamento){
+            album.where('lancamento', lancamento)
+        }
+
+        if(nome){
+            album.where('nome', nome)
+        }
+
+        if(musicaId){
+            album.where('musicaId', musicaId)
+        }
+
+        return album
     }
     store({request}){
         const dados = request.only(['nome', 'musicaId', 'lancamento'])

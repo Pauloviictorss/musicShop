@@ -1,8 +1,26 @@
 import Playlist from "App/Models/Playlist"
 
 export default class PlaylistsController {
-    index(){
-        return Playlist.all()
+    index({request}){
+
+        const {nome, musicaId, user} = request.all()
+
+        const playlist = Playlist.query()
+                         .select(['id', 'nome', 'user'])
+
+        if(nome){
+        playlist.where('nome', nome)
+        }
+
+        if(musicaId){
+            playlist.where('musicaId', musicaId)
+        }
+
+        if(user){
+            playlist.where('user', user)
+        }
+
+        return playlist
     }
     store({request}){
         const dados = request.only(['nome', 'musicaId', 'user'])

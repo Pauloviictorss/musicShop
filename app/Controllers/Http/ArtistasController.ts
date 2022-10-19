@@ -1,8 +1,22 @@
 import Artista from "App/Models/Artista"
 
 export default class ArtistasController {
-    index(){
-        return Artista.all()
+    index({request}){
+
+        const {nome, albumId} = request.all()
+
+        const artista = Artista.query()
+                          .select(['id', 'nome', 'albumId'])
+
+        if(albumId){
+            artista.where('albumId', albumId)
+        }
+
+        if(nome){
+            artista.where('nome', nome)
+        }
+
+        return artista
     }
     store({request}){
         const dados = request.only(['nome', 'dataNascimento', 'albumId'])
