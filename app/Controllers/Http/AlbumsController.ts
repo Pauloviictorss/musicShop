@@ -6,7 +6,7 @@ export default class AlbumsController {
         const {nome, lancamento} = request.all()
 
         const album = Album.query()
-                          .select(['id', 'nome', 'lancamento'])
+                           .select(['id', 'nome', 'lancamento'])
 
         if(lancamento){
             album.where('lancamento', lancamento)
