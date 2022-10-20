@@ -1,14 +1,16 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'artistas'
+  protected tableName = 'podcasts'
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
 
       table.string('nome').notNullable()
-      table.date('data_nascimento')
+      table.string('convidado').notNullable()
+      table.string('duracao')
+      table.integer('host_id').unsigned().references('id').inTable('hosts')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
