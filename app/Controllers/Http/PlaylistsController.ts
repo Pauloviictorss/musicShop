@@ -3,17 +3,13 @@ import Playlist from "App/Models/Playlist"
 export default class PlaylistsController {
     index({request}){
 
-        const {nome, musicaId, user} = request.all()
+        const {nome, user} = request.all()
 
         const playlist = Playlist.query()
                          .select(['id', 'nome', 'user'])
 
         if(nome){
         playlist.where('nome', nome)
-        }
-
-        if(musicaId){
-            playlist.where('musicaId', musicaId)
         }
 
         if(user){
@@ -23,7 +19,7 @@ export default class PlaylistsController {
         return playlist
     }
     store({request}){
-        const dados = request.only(['nome', 'musicaId', 'user'])
+        const dados = request.only(['nome', 'user'])
 
         return Playlist.create(dados)
     }
@@ -40,7 +36,7 @@ export default class PlaylistsController {
         const id = request.param('id')
         const playlist = await Playlist.findOrFail(id)
 
-        const dados = request.only(['nome', 'musicaId', 'user'])
+        const dados = request.only(['nome', 'user'])
         
         playlist.merge(dados).save()
 

@@ -1,10 +1,10 @@
 import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Hostpodcast from 'App/Models/HostPodcast'
+import Albumartista from 'App/Models/Albumartista'
 
 export default class extends BaseSeeder {
   public async run () {
-    await Hostpodcast.createMany([
-      {podcastId: 1, hostId: 1},
+    await Albumartista.createMany([
+      {albumId: 1, artistaId: 1},      
     ])
   }
 }

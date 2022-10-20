@@ -9,6 +9,9 @@ export default class Musica extends BaseModel {
   public nome: string
 
   @column()
+  public albumId: number
+
+  @column()
   public duracao: string
 
   @column.dateTime({ autoCreate: true })

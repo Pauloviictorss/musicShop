@@ -3,7 +3,7 @@ import Album from "App/Models/Album"
 export default class AlbumsController {
     index({request}){
 
-        const {nome, lancamento, musicaId} = request.all()
+        const {nome, lancamento} = request.all()
 
         const album = Album.query()
                           .select(['id', 'nome', 'lancamento'])
@@ -16,14 +16,10 @@ export default class AlbumsController {
             album.where('nome', nome)
         }
 
-        if(musicaId){
-            album.where('musicaId', musicaId)
-        }
-
         return album
     }
     store({request}){
-        const dados = request.only(['nome', 'musicaId', 'lancamento'])
+        const dados = request.only(['nome', 'lancamento'])
 
         return Album.create(dados)
     }
@@ -40,7 +36,7 @@ export default class AlbumsController {
         const id = request.param('id')
         const album = await Album.findOrFail(id)
 
-        const dados = request.only(['nome', 'musicaId', 'lancamento'])
+        const dados = request.only(['nome', 'lancamento'])
         
         album.merge(dados).save()
 

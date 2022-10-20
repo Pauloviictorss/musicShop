@@ -3,14 +3,10 @@ import Artista from "App/Models/Artista"
 export default class ArtistasController {
     index({request}){
 
-        const {nome, albumId} = request.all()
+        const {nome} = request.all()
 
         const artista = Artista.query()
-                          .select(['id', 'nome', 'albumId'])
-
-        if(albumId){
-            artista.where('albumId', albumId)
-        }
+                          .select(['id', 'nome'])
 
         if(nome){
             artista.where('nome', nome)
@@ -19,7 +15,7 @@ export default class ArtistasController {
         return artista
     }
     store({request}){
-        const dados = request.only(['nome', 'dataNascimento', 'albumId'])
+        const dados = request.only(['nome', 'dataNascimento'])
 
         return Artista.create(dados)
     }
@@ -36,7 +32,7 @@ export default class ArtistasController {
         const id = request.param('id')
         const artista = await Artista.findOrFail(id)
 
-        const dados = request.only(['nome', 'dataNascimento', 'albumId'])
+        const dados = request.only(['nome', 'dataNascimento'])
         
         artista.merge(dados).save()
 

@@ -8,6 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nome').notNullable()
+      table.string('duracao').notNullable()
+      table.string('convidado')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */

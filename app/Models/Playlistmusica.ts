@@ -1,15 +1,15 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
 
-export default class Podcastplataforma extends BaseModel {
+export default class Playlistmusica extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
   @column()
-  public podcastId: number
+  public playlistId: number
 
   @column()
-  public plataformaId: number
+  public musicaId: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

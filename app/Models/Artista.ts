@@ -9,9 +9,6 @@ export default class Artista extends BaseModel {
   public nome: string
 
   @column()
-  public albumId: number
-
-  @column()
   public dataNascimento: Date
 
   @column.dateTime({ autoCreate: true })

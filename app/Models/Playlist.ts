@@ -9,9 +9,6 @@ export default class Playlist extends BaseModel {
   public nome: string
 
   @column()
-  public musicaId: number
-
-  @column()
   public user: string
 
   @column.dateTime({ autoCreate: true })
