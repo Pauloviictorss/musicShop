@@ -9,10 +9,7 @@ export default class Podcast extends BaseModel {
   public nome: string
 
   @column()
-  public convidado: string
-
-  @column()
-  public duracao: string
+  public apresentador: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

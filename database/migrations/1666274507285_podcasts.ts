@@ -8,8 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nome').notNullable()
-      table.string('convidado').notNullable()
-      table.string('duracao')
+      table.string('apresentador').notNullable()
       table.integer('host_id').unsigned().references('id').inTable('hosts')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

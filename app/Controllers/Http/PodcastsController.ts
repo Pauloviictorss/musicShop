@@ -3,13 +3,13 @@ import Podcast from "App/Models/Podcast"
 export default class PodcastsController {
     index({request}){
 
-        const {nome, convidado} = request.all()
+        const {nome, apresentador} = request.all()
 
         const podcast = Podcast.query()
-                               .select(['id', 'nome', 'convidado', 'duracao', 'hostId'])
+                               .select(['id', 'nome', 'apresentador', 'hostId'])
 
-        if(convidado){
-            podcast.where('convidado', convidado)
+        if(apresentador){
+            podcast.where('apresentador', apresentador)
         }
 
         if(nome){
@@ -19,7 +19,7 @@ export default class PodcastsController {
         return podcast
     }
     store({request}){
-        const dados = request.only(['nome', 'convidado', 'duracao', 'hostId'])
+        const dados = request.only(['nome', 'apresentador', 'hostId'])
 
         return Podcast.create(dados)
     }
@@ -36,7 +36,7 @@ export default class PodcastsController {
         const id = request.param('id')
         const podcast = await Podcast.findOrFail(id)
 
-        const dados = request.only(['nome', 'convidado', 'duracao', 'hostId'])
+        const dados = request.only(['nome', 'apresentador', 'hostId'])
         
         podcast.merge(dados).save()
 
