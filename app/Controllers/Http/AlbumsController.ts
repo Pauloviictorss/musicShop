@@ -7,6 +7,8 @@ export default class AlbumsController {
 
         const album = Album.query()
                            .select(['id', 'nome', 'lancamento'])
+                           .preload('musicas')
+                           .preload('albumartistas')
 
         if(lancamento){
             album.where('lancamento', lancamento)

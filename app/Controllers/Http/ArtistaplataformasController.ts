@@ -6,7 +6,9 @@ export default class ArtistaplataformasController {
         const {artistaId, plataformaId} = request.all()
 
         const artistaplataforma = Artistaplataforma.query()
-                           .select(['id', 'artistaId', 'plataformaId'])
+                                                   .select(['id', 'artistaId', 'plataformaId'])
+                                                   .preload('plataforma')
+                                                   .preload('artista')
 
         if(artistaId){
             artistaplataforma.where('artistaId', artistaId)

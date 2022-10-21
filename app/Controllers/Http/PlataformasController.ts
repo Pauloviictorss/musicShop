@@ -6,7 +6,9 @@ export default class PlataformasController {
         const {nome} = request.all()
 
         const plataforma = Plataforma.query()
-                           .select(['id', 'nome'])
+                                     .select(['id', 'nome'])
+                                     .preload('plataformapodcasts')
+                                     .preload('artistaplataformas')
 
         if(nome){
             plataforma.where('nome', nome)

@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import Host from './Host'
+import Plataformapodcast from './Plataformapodcast'
 
 export default class Podcast extends BaseModel {
   @column({ isPrimary: true })
@@ -16,4 +18,10 @@ export default class Podcast extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @belongsTo(() => Host)
+  public host: BelongsTo<typeof Host>
+
+  @hasMany(() => Plataformapodcast)
+  public plataformapodcasts: HasMany<typeof Plataformapodcast>
 }

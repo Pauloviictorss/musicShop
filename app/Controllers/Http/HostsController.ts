@@ -6,7 +6,8 @@ export default class HostsController {
         const {nome, localizacao} = request.all()
 
         const host = Host.query()
-                           .select(['id', 'nome', 'localizacao'])
+                         .select(['id', 'nome', 'localizacao'])
+                         .preload('podcasts')
 
         if(localizacao){
             host.where('localizacao', localizacao)

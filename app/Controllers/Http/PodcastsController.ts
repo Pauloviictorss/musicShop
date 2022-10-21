@@ -7,6 +7,8 @@ export default class PodcastsController {
 
         const podcast = Podcast.query()
                                .select(['id', 'nome', 'apresentador', 'hostId'])
+                               .preload('host')
+                               .preload('plataformapodcasts')
 
         if(apresentador){
             podcast.where('apresentador', apresentador)

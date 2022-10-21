@@ -6,7 +6,8 @@ export default class PlataformapodcastsController {
         const {plataformaId, podcastId} = request.all()
 
         const plataformapodcast = Plataformapodcast.query()
-                           .select(['id', 'plataformaId', 'podcastId'])
+                                                   .select(['id', 'plataformaId', 'podcastId'])
+                                                   .preload('podcast')
 
         if(podcastId){
             plataformapodcast.where('podcastId', podcastId)

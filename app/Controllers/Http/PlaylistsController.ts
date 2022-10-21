@@ -7,6 +7,7 @@ export default class PlaylistsController {
 
         const playlist = Playlist.query()
                            .select(['id', 'nome', 'user'])
+                           .preload('playlistmusicas')
 
         if(user){
             playlist.where('user', user)
