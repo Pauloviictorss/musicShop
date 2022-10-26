@@ -7,8 +7,6 @@ export default class PlaylistmusicasController {
 
         const playlistmusica = Playlistmusica.query()
                                              .select(['id', 'playlistId', 'musicaId'])
-                                             .preload('musica')
-                                             .preload('playlist')
 
         if(playlistId){
             playlistmusica.where('playlistId', playlistId)

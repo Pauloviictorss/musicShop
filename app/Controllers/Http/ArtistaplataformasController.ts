@@ -7,8 +7,6 @@ export default class ArtistaplataformasController {
 
         const artistaplataforma = Artistaplataforma.query()
                                                    .select(['id', 'artistaId', 'plataformaId'])
-                                                   .preload('plataforma')
-                                                   .preload('artista')
 
         if(artistaId){
             artistaplataforma.where('artistaId', artistaId)

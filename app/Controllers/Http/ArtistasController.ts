@@ -7,8 +7,8 @@ export default class ArtistaController {
 
         const artista = Artista.query()
                                .select(['id', 'nome', 'dataNascimento'])
-                               .preload('artistaplataformas')
-                               .preload('albumartistas')
+                               .preload('plataformas')
+                               .preload('albums')
 
         if(nome){
             artista.where('nome', nome)

@@ -7,8 +7,8 @@ export default class PlataformasController {
 
         const plataforma = Plataforma.query()
                                      .select(['id', 'nome'])
-                                     .preload('plataformapodcasts')
-                                     .preload('artistaplataformas')
+                                     .preload('podcasts')
+                                     .preload('artistas')
 
         if(nome){
             plataforma.where('nome', nome)

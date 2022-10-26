@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Album from './Album'
-import Playlistmusica from './Playlistmusica'
+import Playlist from './Playlist'
 
 export default class Musica extends BaseModel {
   @column({ isPrimary: true })
@@ -25,6 +25,6 @@ export default class Musica extends BaseModel {
   @belongsTo(() => Album)
   public album: BelongsTo<typeof Album>
 
-  @hasMany(() => Playlistmusica)
-  public playlistmusicas: HasMany<typeof Playlistmusica>
+  @manyToMany(() => Playlist, {pivotTable: 'playlistmusicas'})
+  public playlists: ManyToMany<typeof Playlist>
 }

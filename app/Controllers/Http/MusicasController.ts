@@ -8,7 +8,7 @@ export default class MusicasController {
         const musica = Musica.query()
                              .select(['id', 'nome', 'duracao', 'albumId'])
                              .preload('album')
-                             .preload('playlistmusicas')
+                             .preload('playlists')
 
         if(nome){
             musica.where('nome', nome)

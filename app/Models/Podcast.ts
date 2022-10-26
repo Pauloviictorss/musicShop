@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, BelongsTo, belongsTo, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, BelongsTo, belongsTo, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
 import Host from './Host'
-import Plataformapodcast from './Plataformapodcast'
+import Plataforma from './Plataforma'
 
 export default class Podcast extends BaseModel {
   @column({ isPrimary: true })
@@ -22,6 +22,6 @@ export default class Podcast extends BaseModel {
   @belongsTo(() => Host)
   public host: BelongsTo<typeof Host>
 
-  @hasMany(() => Plataformapodcast)
-  public plataformapodcasts: HasMany<typeof Plataformapodcast>
+  @manyToMany(() => Plataforma, {pivotTable: 'plataformapodcasts'})
+  public plataformas: ManyToMany<typeof Plataforma>
 }

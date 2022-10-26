@@ -7,8 +7,6 @@ export default class AlbumartistasController {
 
         const albumartista = Albumartista.query()
                                          .select(['id', 'albumId', 'artistaId'])
-                                         .preload('artista')
-                                         .preload('album')
 
         if(artistaId){
             albumartista.where('artistaId', artistaId)

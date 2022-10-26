@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasMany, hasMany } from '@ioc:Adonis/Lucid/Orm'
-import Artistaplataforma from './Artistaplataforma'
-import Albumartista from './Albumartista'
+import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import Plataforma from './Plataforma'
+import Album from './Album'
 
 export default class Artista extends BaseModel {
   @column({ isPrimary: true })
@@ -19,9 +19,9 @@ export default class Artista extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
 
-  @hasMany(() => Artistaplataforma)
-  public artistaplataformas: HasMany<typeof Artistaplataforma>
+  @manyToMany(() => Plataforma, {pivotTable: 'artistaplataformas'})
+  public plataformas: ManyToMany<typeof Plataforma>
 
-  @hasMany(() => Albumartista)
-  public albumartistas: HasMany<typeof Albumartista>
+  @manyToMany(() => Album, {pivotTable: 'albumartistas'})
+  public albums: ManyToMany<typeof Album>
 }
