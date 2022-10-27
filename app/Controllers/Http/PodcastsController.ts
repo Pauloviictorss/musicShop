@@ -1,4 +1,5 @@
 import Podcast from "App/Models/Podcast"
+import PodcastValidator from "App/Validators/PodcastValidator"
 
 export default class PodcastsController {
     index({request}){
@@ -20,11 +21,11 @@ export default class PodcastsController {
 
         return podcast
     }
-    store({request}){
-        const dados = request.only(['nome', 'apresentador', 'hostId'])
-
+    async store({request}){
+        const dados = await request.validate(PodcastValidator)
         return Podcast.create(dados)
     }
+    
     show({request}){
         const id = request.param('id')
         return Podcast.find(id)

@@ -1,4 +1,5 @@
 import Plataformapodcast from "App/Models/Plataformapodcast"
+import PlataformapodcastValidator from "App/Validators/PlataformapodcastValidator"
 
 export default class PlataformapodcastsController {
     index({request}){
@@ -18,11 +19,12 @@ export default class PlataformapodcastsController {
 
         return plataformapodcast
     }
-    store({request}){
-        const dados = request.only(['plataformaId', 'podcastId'])
-
+    
+    async store({request}){
+        const dados = await request.validate(PlataformapodcastValidator)
         return Plataformapodcast.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Plataformapodcast.find(id)

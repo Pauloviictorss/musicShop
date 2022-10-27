@@ -1,4 +1,5 @@
 import Albumartista from "App/Models/Albumartista"
+import AlbumartistaValidator from "App/Validators/AlbumartistaValidator"
 
 export default class AlbumartistasController {
     index({request}){
@@ -18,11 +19,12 @@ export default class AlbumartistasController {
 
         return albumartista
     }
-    store({request}){
-        const dados = request.only(['albumId', 'artistaId'])
 
+    async store({request}){
+        const dados = await request.validate(AlbumartistaValidator)
         return Albumartista.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Albumartista.find(id)

@@ -1,4 +1,5 @@
 import Artistaplataforma from "App/Models/Artistaplataforma"
+import ArtistaPlataformaValidator from "App/Validators/ArtistaPlataformaValidator"
 
 export default class ArtistaplataformasController {
     index({request}){
@@ -18,11 +19,12 @@ export default class ArtistaplataformasController {
 
         return artistaplataforma
     }
-    store({request}){
-        const dados = request.only(['artistaId', 'plataformaId'])
-
+    
+    async store({request}){
+        const dados = await request.validate(ArtistaPlataformaValidator)
         return Artistaplataforma.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Artistaplataforma.find(id)

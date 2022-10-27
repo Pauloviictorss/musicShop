@@ -1,4 +1,5 @@
 import Artista from "App/Models/Artista"
+import ArtistaValidator from "App/Validators/ArtistaValidator"
 
 export default class ArtistaController {
     index({request}){
@@ -16,11 +17,12 @@ export default class ArtistaController {
 
         return artista
     }
-    store({request}){
-        const dados = request.only(['nome', 'dataNascimento'])
-
+    
+    async store({request}){
+        const dados = await request.validate(ArtistaValidator)
         return Artista.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Artista.find(id)

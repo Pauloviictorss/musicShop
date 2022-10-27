@@ -1,4 +1,5 @@
 import Host from "App/Models/Host"
+import HostValidator from "App/Validators/HostValidator"
 
 export default class HostsController {
     index({request}){
@@ -19,11 +20,12 @@ export default class HostsController {
 
         return host
     }
-    store({request}){
-        const dados = request.only(['nome', 'localizacao'])
-
+    
+    async store({request}){
+        const dados = await request.validate(HostValidator)
         return Host.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Host.find(id)

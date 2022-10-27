@@ -1,4 +1,5 @@
 import Playlistmusica from "App/Models/Playlistmusica"
+import PlaylistmusicaValidator from "App/Validators/PlaylistmusicaValidator"
 
 export default class PlaylistmusicasController {
     index({request}){
@@ -18,11 +19,12 @@ export default class PlaylistmusicasController {
 
         return playlistmusica
     }
-    store({request}){
-        const dados = request.only(['playlistId', 'musicaId'])
 
+    async store({request}){
+        const dados = await request.validate(PlaylistmusicaValidator)
         return Playlistmusica.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Playlistmusica.find(id)

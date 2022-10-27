@@ -1,4 +1,5 @@
 import Plataforma from "App/Models/Plataforma"
+import PlataformaValidator from "App/Validators/PlataformaValidator"
 
 export default class PlataformasController {
     index({request}){
@@ -16,11 +17,12 @@ export default class PlataformasController {
 
         return plataforma
     }
-    store({request}){
-        const dados = request.only(['nome'])
-
+    
+    async store({request}){
+        const dados = await request.validate(PlataformaValidator)
         return Plataforma.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Plataforma.find(id)

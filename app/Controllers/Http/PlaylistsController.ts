@@ -1,4 +1,5 @@
 import Playlist from "App/Models/Playlist"
+import PlaylistValidator from "App/Validators/PlaylistValidator"
 
 export default class PlaylistsController {
     index({request}){
@@ -19,11 +20,12 @@ export default class PlaylistsController {
 
         return playlist
     }
-    store({request}){
-        const dados = request.only(['nome', 'user'])
-
+    
+    async store({request}){
+        const dados = await request.validate(PlaylistValidator)
         return Playlist.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Playlist.find(id)

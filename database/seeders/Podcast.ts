@@ -4,7 +4,7 @@ import Podcast from 'App/Models/Podcast'
 export default class extends BaseSeeder {
   public async run () {
     await Podcast.createMany([
-      {nome: 'PodPah', apresentador: 'Igão e Mítico'},
+      {nome: 'PodPah', apresentador: 'Igão e Mítico', hostId: 1},
     ])
   }
 }

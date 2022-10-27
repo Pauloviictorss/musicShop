@@ -1,4 +1,5 @@
 import Album from "App/Models/Album"
+import AlbumValidator from "App/Validators/AlbumValidator"
 
 export default class AlbumsController {
     index({request}){
@@ -20,11 +21,12 @@ export default class AlbumsController {
 
         return album
     }
-    store({request}){
-        const dados = request.only(['nome', 'lancamento'])
 
+    async store({request}){
+        const dados = await request.validate(AlbumValidator)
         return Album.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Album.find(id)

@@ -1,4 +1,5 @@
 import Musica from "App/Models/Musica"
+import MusicaValidator from "App/Validators/MusicaValidator"
 
 export default class MusicasController {
     index({request}){
@@ -20,11 +21,12 @@ export default class MusicasController {
 
         return musica
     }
-    store({request}){
-        const dados = request.only(['nome', 'duracao', 'albumId'])
-
+    
+    async store({request}){
+        const dados = await request.validate(MusicaValidator)
         return Musica.create(dados)
     }
+
     show({request}){
         const id = request.param('id')
         return Musica.find(id)
