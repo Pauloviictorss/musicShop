@@ -11,9 +11,7 @@ export default class extends BaseSchema {
       table.string('apresentador', 50).notNullable()
       table.integer('host_id').unsigned().references('id').inTable('hosts')
       table.integer('plataforma_id').unsigned().references('id').inTable('plataformas')
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
+
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

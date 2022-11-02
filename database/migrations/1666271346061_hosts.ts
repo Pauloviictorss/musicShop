@@ -8,10 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('nome').notNullable()
-      table.string('localizacao', 2).notNullable()
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
+      table.string('localizacao').notNullable()
+
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })

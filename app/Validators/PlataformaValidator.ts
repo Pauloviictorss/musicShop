@@ -6,12 +6,15 @@ export default class PlataformaValidator {
 
   public schema = schema.create({
     nome: schema.string([
-      rules.minLength(1),
       rules.maxLength(50),
       rules.required(),
       rules.unique({table: 'plataformas', column: 'nome'}),
     ]),
   })
 
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    'nome.maxLength': 'O nome da plataforma deve ter, no máximo, {{options.maxLength }} caracteres.',
+    'nome.required': 'O campo nome é obrigatório.',
+    'nome.unique': 'Essa Platafomra já foi cadastrada, insira uma nova Plataforma.',
+  }
 }

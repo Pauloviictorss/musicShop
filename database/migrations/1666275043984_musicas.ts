@@ -10,9 +10,7 @@ export default class extends BaseSchema {
       table.string('nome', 100).notNullable()
       table.string('duracao', 20)
       table.integer('album_id').unsigned().references('id').inTable('albums')
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
+
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
