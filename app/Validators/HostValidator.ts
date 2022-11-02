@@ -20,6 +20,6 @@ export default class HostValidator {
     'nome.required': 'O campo nome é obrigatório.',
     'nome.unique': 'Esse Host já foi cadastrado, insira um novo Host.',
 
-    'localizacao.enum': 'Essa informação não é válida. Insira a UF do Host. Opções disponíveis: {{ options.enum }}',
+    'localizacao.enum': 'Essa informação não é válida. Insira a UF do Host. Opções disponíveis:',
   }
 }
