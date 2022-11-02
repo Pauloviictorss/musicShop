@@ -6,10 +6,10 @@ export default class ArtistaPlataformaValidator {
 
   public schema = schema.create({
     artistaId: schema.number([
-      rules.required()
+      rules.required(),
     ]),
     plataformaId: schema.number([
-      rules.required()
+      rules.required(),
     ]),
   })
 

@@ -6,10 +6,10 @@ export default class AlbumartistaValidator {
 
   public schema = schema.create({
     artistaId: schema.number([
-      rules.required()
+      rules.required(),
     ]),
     albumId: schema.number([
-      rules.required()
+      rules.required(),
     ]),
   })
 

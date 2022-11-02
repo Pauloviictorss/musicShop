@@ -3,9 +3,7 @@ import MusicaValidator from "App/Validators/MusicaValidator"
 
 export default class MusicasController {
     index({request}){
-
         const {nome, albumId} = request.all()
-
         const musica = Musica.query()
                              .select(['id', 'nome', 'duracao', 'albumId'])
                              .preload('album')
@@ -13,9 +11,7 @@ export default class MusicasController {
 
         if(nome){
             musica.where('nome', nome)
-        }
-
-        if(albumId){
+        } else if(albumId){
             musica.where('albumId', albumId)
         }
 
@@ -31,19 +27,18 @@ export default class MusicasController {
         const id = request.param('id')
         return Musica.find(id)
     }
+
     async destroy({request}){
         const id = request.param('id')
         const musica = await Musica.findOrFail(id)
         return musica.delete()
     }
+
     async update({request}){
         const id = request.param('id')
         const musica = await Musica.findOrFail(id)
-
         const dados = request.only(['nome', 'duracao', 'albumId'])
-        
         musica.merge(dados).save()
-
         return dados
     }
 }

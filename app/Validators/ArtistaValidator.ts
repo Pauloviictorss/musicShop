@@ -6,7 +6,7 @@ export default class ArtistaValidator {
 
   public schema = schema.create({
     nome: schema.string([
-      rules.maxLength(100)
+      rules.maxLength(100),
     ]),
     dataNascimento: schema.date(),
   })

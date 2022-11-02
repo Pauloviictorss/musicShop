@@ -10,7 +10,7 @@ export default class HostValidator {
     ]),
     localizacao: schema.string([
       rules.maxLength(2),
-      rules.minLength(2)
+      rules.minLength(2),
     ]),
   })
 
