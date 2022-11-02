@@ -6,10 +6,23 @@ export default class AlbumValidator {
 
   public schema = schema.create({
     nome: schema.string([
-      rules.maxLength(100)
+      rules.maxLength(100),
+      rules.required(),
     ]),
-    lancamento: schema.date(),
+    lancamento: schema.date({
+      format: 'dd-MM-yyyy',
+    }, [
+      rules.required(),
+      rules.before('today')
+    ]),
   })
 
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    'nome.maxLength': 'O nome do álbum deve ter, no máximo, {{options.maxLength }} caracteres.',
+    'nome.required': 'O campo nome é obrigatório.',
+
+    'lancamento.required': 'O campo lançamento é obrigatório.',
+    'lancamento.before': 'A data de lançamento deve ser menor do que o dia atual.',
+    'lancamento.format': 'O formato de data é dd-mm-yyyy.',
+  }
 }

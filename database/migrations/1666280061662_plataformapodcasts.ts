@@ -9,9 +9,7 @@ export default class extends BaseSchema {
 
       table.integer('plataforma_id').unsigned().references('id').inTable('plataformas')
       table.integer('podcast_id').unsigned().references('id').inTable('podcasts')
-      /**
-       * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
-       */
+
       table.timestamp('created_at', { useTz: true })
       table.timestamp('updated_at', { useTz: true })
     })
