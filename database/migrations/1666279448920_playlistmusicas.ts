@@ -9,9 +9,6 @@ export default class extends BaseSchema {
 
       table.integer('playlist_id').unsigned().references('id').inTable('playlists')
       table.integer('musica_id').unsigned().references('id').inTable('musicas')
-
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
     })
   }
 

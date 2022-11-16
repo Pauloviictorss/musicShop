@@ -9,9 +9,6 @@ export default class extends BaseSchema {
 
       table.string('nome').notNullable()
       table.string('localizacao').notNullable()
-
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
     })
   }
 

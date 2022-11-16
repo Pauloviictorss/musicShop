@@ -9,11 +9,10 @@ export default class UsersController {
     }
 
     async login ({request, auth}){
+        //const{email, password} = request('body')
+
         const email = request.input('email')
         const password = request.input('password')
-
-        const token = await auth.use('api').attempt(email, password)
-
-        return token
+        return await auth.use('api').attempt(email, password)
     }
 }

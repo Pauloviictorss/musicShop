@@ -8,7 +8,7 @@ export default class PodcastValidator {
     nome: schema.string([
       rules.maxLength(100),
       rules.unique({table: 'podcasts', column: 'nome'}),
-        rules.required(),
+      rules.required(),
     ]),
     apresentador: schema.string([
       rules.maxLength(50),

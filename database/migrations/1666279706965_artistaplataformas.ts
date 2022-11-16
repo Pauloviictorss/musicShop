@@ -9,9 +9,6 @@ export default class extends BaseSchema {
 
       table.integer('artista_id').unsigned().references('id').inTable('artistas')
       table.integer('plataforma_id').unsigned().references('id').inTable('plataformas')
-
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
     })
   }
 
